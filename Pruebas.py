@@ -1,54 +1,140 @@
-import pygame, sys
+import pygame
+import sys
 from pygame.locals import *
 
 pygame.init()
-#Implementación de la pantalla
-W,H = 1920,1464
-PANTALLA = pygame.display.set_mode((W,H))
+# Implementación de la pantalla
+
+W, H = 1920, 1464
+PANTALLA = pygame.display.set_mode((W, H))
 FPS = 60
 RELOJ = pygame.time.Clock()
 
-pygame.displawy.set_caption("Ahorcadito")
+pygame.display.set_caption("Ahorcadito")
 
-#icono del juego
+# icono del juego
 icono = pygame.image.load("Imagenes/img.png")
 pygame.display.set_icon(icono)
 
-#fondo del juego
 fondo = pygame.image.load("Imagenes/fondo1.jpg").convert()
 x = 0
+y = 0
+PANTALLA.blit(fondo, (x, y))
+image_sprite = [pygame.image.load("Imagenes/skins/skin1/Skin1paso1.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso2.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso3.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso4.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso5.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso6.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso7.png"),
+             pygame.image.load("Imagenes/skins/skin1/Skin1paso8.png")]
+
+image_sprite2 = [pygame.image.load("Imagenes/skins/skin2/Skin2paso1.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso2.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso3.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso4.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso5.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso6.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso7.png"),
+                pygame.image.load("Imagenes/skins/skin2/Skin2paso8.png")]
+
+clock = pygame.time.Clock()
+
+value = 0
+value2 = 0
+
+run = True
+
+while run:
 
 
-BLANCO = (255,255,255)
-NEGRO = (0,0,0)
-ROJO = (255,0,0)
-AZUL = (0,0,255)
-VERDE = (0,255,0)
+    if value >= len(image_sprite):
+        value = 0
 
-Colorcito_asi_bien_ricolino = (12,178,73)
+    image = image_sprite[value]
 
-#PANTALLA.fill(Colorcito_asi_bien_ricolino)
+    x = 100
 
-#Rectangulo1 = pygame.draw.rect(PANTALLA,NEGRO,(100,50,100,50))
+    if value == 0:
+        y = 500
+    else:
+        y = 500
 
-#pygame.draw.line(PANTALLA,VERDE, (100,104), (199,104), 10)
-
-#pygame.draw.circle(PANTALLA,ROJO, (122,130), 20, 10)
-
-#pygame.draw.ellipse(PANTALLA,BLANCO,(300,200,40,80))
-
-
-#Bucle del jeugo: Mantiene el juego abierto
-while True:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-    x_relativa = x % fondo.get_rect().width
-    PANTALLA.blit(fondo, (x_relativa - fondo.get_rect().width, 0))
-    if x_relativa < W:
-        PANTALLA.blit(fondo,(x_relativa,0))
-    x -= 1
+    PANTALLA.blit(image, (x, y))
 
     pygame.display.update()
-    RELOJ.tick(FPS)
+
+    PANTALLA.fill((0, 0, 0))
+
+    value += 1
+    fondo = pygame.image.load("Imagenes/fondo1.jpg").convert()
+    x = 0
+    y = 0
+    PANTALLA.blit(fondo, (x, y))
+
+
+
+    clock.tick(8)
+
+    if value2 >= len(image_sprite2):
+            value2 = 0
+
+    image2 = image_sprite2[value2]
+
+    x = 1250
+
+    if value == 0:
+            y = 500
+    else:
+            y = 500
+
+    PANTALLA.blit(image2, (x, y))
+
+    pygame.display.update()
+
+    value2 += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
