@@ -45,54 +45,53 @@ value2 = 0
 
 run = True
 
-while run:
+class pantalla:
+   while run:
+        if value >= len(image_sprite):
+          value = 0
+
+        image = image_sprite[value]
+
+        x = 100
+
+        if value == 0:
+          y = 500
+        else:
+          y = 500
+
+        PANTALLA.blit(image, (x, y))
+
+        pygame.display.update()
+
+        PANTALLA.fill((0, 0, 0))
+
+        value += 1
+        fondo = pygame.image.load("Imagenes/fondo1.jpg").convert()
+        x = 0
+        y = 0
+        PANTALLA.blit(fondo, (x, y))
 
 
-    if value >= len(image_sprite):
-        value = 0
 
-    image = image_sprite[value]
+        clock.tick(8)
 
-    x = 100
+        if value2 >= len(image_sprite2):
+                value2 = 0
 
-    if value == 0:
-        y = 500
-    else:
-        y = 500
+        image2 = image_sprite2[value2]
 
-    PANTALLA.blit(image, (x, y))
+        x = 1250
 
-    pygame.display.update()
-
-    PANTALLA.fill((0, 0, 0))
-
-    value += 1
-    fondo = pygame.image.load("Imagenes/fondo1.jpg").convert()
-    x = 0
-    y = 0
-    PANTALLA.blit(fondo, (x, y))
-
-
-
-    clock.tick(8)
-
-    if value2 >= len(image_sprite2):
-            value2 = 0
-
-    image2 = image_sprite2[value2]
-
-    x = 1250
-
-    if value == 0:
+        if value == 0:
             y = 500
-    else:
+        else:
             y = 500
 
-    PANTALLA.blit(image2, (x, y))
+        PANTALLA.blit(image2, (x, y))
 
-    pygame.display.update()
+        pygame.display.update()
 
-    value2 += 1
+        value2 += 1
 
 
 
