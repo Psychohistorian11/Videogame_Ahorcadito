@@ -3,6 +3,7 @@ import pygame, sys
 from ejemploComplement import Button
 
 
+
 pygame.init()
 
 SCREEN = pygame.display.set_mode((1920, 1464))
@@ -15,18 +16,25 @@ def get_font(size):  # Returns Press-Start-2P in the desired size
     return pygame.font.Font("Imagenes/font.ttf", size)
 
 
+
+
+
 def play():
     while True:
         PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
+
+
         SCREEN.fill("black")
 
-        PLAY_TEXT = get_font(45).render("This is the PLAY screen.", True, "White")
-        PLAY_RECT = PLAY_TEXT.get_rect(center=(640, 260))
-        SCREEN.blit(PLAY_TEXT, PLAY_RECT)
+        PLAY_BACK = Button(image=None, pos=(400, 1000),
+                           text_input="BACK", font=get_font(75), base_color="White", hovering_color="Red")
 
-        PLAY_BACK = Button(image=None, pos=(640, 460),
-                           text_input="BACK", font=get_font(75), base_color="White", hovering_color="Green")
+        PLAY_CONTINUE = Button(image=None, pos=(510, 900),
+                           text_input="CONTINUE", font=get_font(75), base_color="White", hovering_color="Green")
+
+        PLAY_CONTINUE.changeColor(PLAY_MOUSE_POS)
+        PLAY_CONTINUE.update(SCREEN)
 
         PLAY_BACK.changeColor(PLAY_MOUSE_POS)
         PLAY_BACK.update(SCREEN)
@@ -39,8 +47,13 @@ def play():
                 if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
                     main_menu()
 
-        from Pantalladejuego import pantalla
-        pantalla()
+                if PLAY_CONTINUE.checkForInput(PLAY_MOUSE_POS):
+                    from Pantalladejuego import pantalla
+                    pantalla()
+
+
+
+
 
 
         pygame.display.update()
